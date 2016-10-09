@@ -97,13 +97,13 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
-    for item in numbers:
-        for i in range(i+1, len(numbers)):
-            total_of_two_items = numbers[i] + numbers[i]
-            if (total_of_two_items == 0):
-        
-                return '{first_item} {second_item}'.format(first_item=i+1, second_item=i+1)
-        
+  
+    the_sum = []
+    for i in numbers:
+        if i >= 0 and -i in numbers:
+            the_sum.append([-i, i])
+    return the_sum
+
 
 
 def top_chars(phrase):

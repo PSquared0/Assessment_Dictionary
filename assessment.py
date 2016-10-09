@@ -28,9 +28,14 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
+    word_count = {}
 
-    return {}
-
+    for word in phrase.split():
+        if word not in word_count:
+            word_count[word] = 1
+        else:
+            word_count[word] += 1
+    return word_count
 
 def get_melon_price(melon_name):
     """Given a melon name, return the price of the melon
@@ -50,9 +55,15 @@ def get_melon_price(melon_name):
 
         >>> get_melon_price('Tomato')
         'No price found'
+
     """
 
-    return 0
+    melons = {'Watermelon': 2.95,
+              'Cantaloupe': 2.50,
+              'Musk': 3.25,
+              'Christmas': 14.25}
+
+    return melons.get(melon_name, 'No price found')
 
 
 def word_length_sorted(words):
@@ -71,7 +82,17 @@ def word_length_sorted(words):
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
 
-    return []
+    list_count = {}
+    count_list = []
+
+    for word in words:
+        words = len(word)
+        list_count[words] = word
+
+    # for key, value in sorted(list_count.items()):
+    #     count_list.append((key, sorted(value)))
+    
+    return list_count
 
 
 def translate_to_pirate_talk(phrase):
@@ -113,7 +134,25 @@ def translate_to_pirate_talk(phrase):
         'me swabbie be not a man!'
     """
 
-    return ""
+    pirate_speak = {'student': 'swabbie',
+    'my': 'me',
+    'is': 'be',
+    'sir':  'matey',
+    'man': 'matey',
+    'hotel': 'fleabag inn',
+    'boy': 'matey',
+    'professor': 'foul blaggart',
+    'restaurant': 'galley',
+    'your': 'yer',
+    'excuse': 'arr',
+    'students': 'swabbies',
+    'are': 'be',
+    'the': 'th'
+    'restroom': 'head',}
+
+
+    return " ".join([pirate_speak.get(word, word) for word in phrase.split()])
+
 
 
 def kids_game(names):
@@ -158,8 +197,17 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
+    kids_game_list = []
 
-    return []
+    for word in names:
+        if word[0] not in kids_game_list:
+            kids_game_list[name[0]] = [name]
+        else:
+             kids_game_list[name[0]].append(name)
+        
+        return kids_game_list
+
+
 
 #####################################################################
 # You can ignore everything below this.
